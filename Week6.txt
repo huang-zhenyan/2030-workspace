@@ -1,0 +1,39 @@
+Call by value: Definition and Manipulation
+- context.method(argument)
+	- arg is not passed directly to method call
+	- arg is passed indirectly: copy of value arg is passed to method call (called "call by value")
+- parameter is in callee, argument is when parameter is being used
+-	public class util() {
+		void reassignInt(int j) {
+			j = j + 1;
+		}
+- 	Util u = new Util();
+- 	int i = 10;
+- 	u.reassignInt(i); // i will still be 10 since method reassign only uses a copy of value i
+- Container vs containee
+	- container object: an object that contains others
+	- containee object: an object that is contained within another
+		- containee can be shared by multiple containers
+	- containers and containees should still exist if you destroy their containers/containees
+	- FILE SYSTEM ANALOGY:
+		- if you delete a folder, the files inside must be deleted
+		- if you delete a file, you DO NOT delete the folder
+Navigating Aggregations: Two Approaches
+- aggregation links between classes constrain how you navigate among these classes
+- approach 1: using the type info of attributes
+- approach 2: using links in example object structure
+
+Composition:
+- No sharing is a requirement for composition
+	- files are owned exclusively by a folder
+- Copy constructor
+	- a constructor that copies attributes from another object of same type
+Aggregation vs Compisition:
+- File directories need to preserve composition (do not allow file tof be shared)
+- Aggregation, containees may be shared among containers (but containees should exist independtly)
+- Composition, containers own exclusive access to their containees (destroying container destroys containees)
+
+
+
+	
+	

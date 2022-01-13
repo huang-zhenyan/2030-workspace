@@ -1,0 +1,66 @@
+Week 5 Notes:
+
+To Overide or Note to Overide:
+- Every NON PRIMITIVE class type (String, Array, our own created classes etc) inherits "equals" method from "Object" class
+- "Object" class is the parent class, the inheritor class (String, Array, our own created classes) is child class
+- PRIMITIVE CLASS (int, double, float) DO NOT INHERIT EQUALS
+	- Calling ".equals" will result in compilation error
+	- Instead use == to compare their values
+
+Default equals method:
+- public boolean equals (Object obj) {
+	return this == obj
+	}
+- we can see that equals method takes and Object so we can compare any object with any object (string.equals(point), etc)
+- if we did String s1 == Point p1, directly it will be compilation error (cannot compare String with Point)
+- When you use String.equals(Point), you should always check which one is context object (here is String) and which is Argument
+	- since context object will either have inherited "equals" method or a redefined "equals" method
+
+Comparing references:
+- reflexive x.equals(x)
+- symmetric x.equals(y) iff y.equals(x)
+- transitive x.equals(y) and y.equals(z) implies x.equals(z)
+ 
+Dynamic Types:
+- PointV2 p1 = new PointV2 (...)
+	- the keyword after "new" is PointV2 which is the dynamic type
+- When you do comparison, you want to compare the same dynamic types
+
+Type Casting:
+- Static type means any object is acceptable, so (Object obj) obj can be anything
+
+- public boolean.equals(Object obj) { // override equals method
+	if (this == obj) { return true; } // checks reflexive propety
+	if (obj == null) { return false; } // if obj is class null, then false because the caller has a class
+	if (this.getclass() != obj.getclass()) { return false; } // check if class is same
+	PointV2 other = (PointV2) obj; // type cast obj into other so we do not get compilation error
+	return this.x == other.x && this.y == other.y // no compliation error when calling other.x cause type casted
+
+Comparison:
+- use == to compare address
+- redefine equals to compare contents
+- If two objects are reference-equal, then the two objects are contents-equal (DOESN't WORK THE OTHER WAY AROUND)
+
+assertSame vs assertEquals:
+- assertSame(exp1, exp2) passes if exp1 and exp2 refers to the SAME object
+- assertEquals(exp1, exp2) passes if exp1 and exp2 are primitive type then exp1 == exp2
+	- if exp1 and exp2 are reference type then passes if exp1.equals(exp2)
+
+Asserting Reference vs Object Equality
+- cannot write Point V1 p1 == Point V2 p2 // compilation error
+- you can do assertSame(p1, p2) // no compilation cause handled during run time
+
+Short-circuit effect
+- need a guarding constraint using &&, for example division by 0
+- if (x != 0 && y/x > 2) {
+	...
+}
+- if (x == 0 && y/x > 2) { //doesn't what operand 2 is if operand 1 is true
+	...
+}
+- evaluation at runtime is from left to right
+
+
+
+
+

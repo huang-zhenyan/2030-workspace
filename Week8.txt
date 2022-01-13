@@ -1,0 +1,74 @@
+Static Types Determining Expectations
+	- descendant class can:
+		- inherit all code from ancestor
+		- declare new attributes
+		- define new methods (and overide)
+	- we can reassign a variable to an object of its descendant classs (Smartphone s = Iphone13Pro i)
+		- doesn't work the other way
+	- reference static type
+		- "Student Jim" declares Jim's static type as student
+		- static type never changes
+		- static type defines the usages of the variable as a context object
+	- descendant always has more expectations (methods) than its parent
+
+Rules of Substitution
+	- declaring "C1 v1" means v1 will be of object class C1
+	- it is safe to substitute (reassign) static type A with any object whose static type is a descendant of A
+	- not safe to substitute stactic type A with ancestors
+		- ancestors cannot fulfill the expectations of its descendants
+	- not safe to substitute static type A with object which is not a descendant of A
+	- Can V2 substitute V1?
+		- Means: can the static type of V2 fulfill the expecations of static type V1
+			- yes if static type of V2 is a descendant of V1 static type
+
+Dynamic Types: Re-Assigning to New Objects
+	- static type - when a variable is declared (never changes)
+		- "Student s"
+		- Static Type: contains the expectations
+	- dynamic type - type of object that it is currently pointing to at runtime
+		- "s = new ResidentStudent("Rachael")
+			- CANNOT CALL "s.premiumrate" since static type of s is "Student"
+		- Dynamic Type: Accumulation of Code
+	- reassignment of "Student jim" to "jim = new ResidentStudent()" can only happen if ResidentStudent has expectations
+
+Dynamic Types: Re-Assigning to Existing Objects
+	- variable assignment is valid if the static type of right hand side and fulfill static type of left hand side
+	- Polymorphism: object variable may have "multiple possible shapes"
+	- Dynamic Binding: version of a method invoked depends on the "current shape" (dynamic type)
+
+Motivation of Type Casting
+	- "Student jim =  new ResidentStudent("J. Davis");
+	- "ResidentStudent rs = jim;"
+		- the code is above IS NOT ALLOWED because compiler does not know that jim's dynamic type is ResidentStudent
+
+Syntax of Type Cast, Named vs Anonymous Cast
+	- "Student jim = new ResidentStudent("Jim")";
+	- "ResidentStudent rs = (ResidentStudent) jim";
+		- we create an alias of jim whose static type is ResidentStudent so rs can be reassigned
+			- LHS and RHS static types are now the same (whereas before static type of jim was student)
+	- Name cast: use intermediate variable to store the cast result
+		- "SmartPhone aPhone = new Iphone13Pro();
+		- "IOS forHeeyeon = (IPhone13Pro) aPhone;
+	- Anonymous cast: use the cast result directly
+		- "((Iphone13Pro) aPhone).facetime();"
+			- notice how you need to do the casting first before calling method
+
+Compilable Casts Subject to ClassCastException
+	- Compile time, we look at static type
+	- Run time, we check dynamic type for ClassCastExcpetion (variable's dynamic type needs to fulfill exp of cast type)
+		- CAST HAS TO BE ANCESTOR OF DYNAMIC TYPE
+
+
+Visual Summary of Type Casting
+	- A cast (C)v is compiable and runtime-error-free if C is located along the ancestor path of DTv
+
+Checking Dynamic Type via 'instanceof'
+	- "if (jim instanceof ResidentStudent)"
+		- instanceof checks if dynamic type of jim can fulfill the expectations of ResidentStudent
+		- instanceof checks if dynamic type of jim is a descendant class of C
+
+
+
+
+
+

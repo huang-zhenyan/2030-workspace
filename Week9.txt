@@ -1,0 +1,19 @@
+Static Types, Casts, Polymorphism
+	- "C v" (static type of reference variable v is class C)
+	- method call v.m is valid if m is a method defined in class C
+	- you are only allowed to call methods defined in static type "C", DONT CARE ABOUT DYNAMIC TYPE
+	- "if (s instanceof ResidentStudent) {
+		((ResidentStudent) s).setPremiumRate(1.75);
+		}"
+		- use instanceof to check dynamic type (true if dynamic type of s fulfills expecations of ResidentStudent)
+		- use anonymous cast to create alias of S to have static type ResidentStudent
+
+A Polymorphic Collection of Students
+	- Static Type of elements is Students
+	- DT of elements is either Resident Students or NonResidentStudents (both descendents of ST)
+	
+
+Type Checking, Dynamic Binding of equals/toString
+	- wether java code compiles depends on static type
+	- behaviour of java code being executed at runtime depends on dynamic type
+

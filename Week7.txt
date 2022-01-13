@@ -1,0 +1,36 @@
+Design (Without Inheritance)
+
+	- Cohesion
+		- In a single class, all attributes and methods are related to each other under a common theme
+
+	- Single Choice Principle
+		- When a change is needed, there is only a single or minimum number of places to make such changes
+
+
+Visibility: Project, Package, (Sub)-Class
+	- "extends" allow you to inherit attributes from the superclass (even if they are not in the same package)
+	- "protected" allows you to access attributes of a class from a different package
+
+Use of extends and super
+	- extend is used to inherit attributes and methods
+	- we can use super to use methods from the parent class
+
+Visualizing Parent/Child Objects
+	- A child inherits all non-private attributes from its parents
+	- A CHILD INSTANCE HAS AT LEAST AS MANY ATTRIBUTES FROM ITS PARENTS
+
+Polymorphism
+	- Object of type parent class can always be reassigned to a object of child class
+
+Dynamic Binding
+	- Always pay attention to the dynamic type so you know which method (parent or child) is being called
+
+Type Hierarchy Formed by Inheritance
+	- Inheritance creates a heirarchy of classes
+		- root of the heirarchy extends class Object
+	- Ancestor of class A are: A itself, all classes that A extends (everything above a)
+	- Descendent of class A are: A itself, all classes that extends A (everything below a)
+
+
+
+
